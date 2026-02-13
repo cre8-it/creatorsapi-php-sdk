@@ -16,18 +16,20 @@ For PHP installation, you can download it from the official website: https://www
 php --version
 ```
 
-### 2. Install Dependencies
+### 2. Install SDK (Composer)
 ```bash
-cd {path_to_dir}/creatorsapi-php-sdk
-composer install
+composer require cre8-it/creatorsapi-php-sdk
 ```
+If you're running from a cloned repo, run `composer install` in the repo root instead.
 
 ### 3. Run Sample Code
 Navigate to the examples directory to run the samples.
 
 ```bash
-cd examples
+cd {path_to_project}/vendor/cre8-it/creatorsapi-php-sdk/examples
 ```
+
+If you're running from a cloned repo, use `cd {path_to_project}/creatorsapi-php-sdk/examples`.
 
 Before running the samples, you'll need to configure your API credentials in the sample files by replacing the following placeholders:
 
