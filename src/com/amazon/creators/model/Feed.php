@@ -44,7 +44,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => 'string',
         'size' => 'float',
         'md5' => 'string',
-        'lastUpdated' => 'string'
+        'lastUpdated' => 'string',
+        'feedType' => '\Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType'
     ];
 
     /**
@@ -58,7 +59,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => null,
         'size' => null,
         'md5' => null,
-        'lastUpdated' => null
+        'lastUpdated' => null,
+        'feedType' => null
     ];
 
     /**
@@ -70,7 +72,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => false,
         'size' => false,
         'md5' => false,
-        'lastUpdated' => false
+        'lastUpdated' => false,
+        'feedType' => false
     ];
 
     /**
@@ -162,7 +165,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => 'feedName',
         'size' => 'size',
         'md5' => 'md5',
-        'lastUpdated' => 'lastUpdated'
+        'lastUpdated' => 'lastUpdated',
+        'feedType' => 'feedType'
     ];
 
     /**
@@ -174,7 +178,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => 'setFeedName',
         'size' => 'setSize',
         'md5' => 'setMd5',
-        'lastUpdated' => 'setLastUpdated'
+        'lastUpdated' => 'setLastUpdated',
+        'feedType' => 'setFeedType'
     ];
 
     /**
@@ -186,7 +191,8 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedName' => 'getFeedName',
         'size' => 'getSize',
         'md5' => 'getMd5',
-        'lastUpdated' => 'getLastUpdated'
+        'lastUpdated' => 'getLastUpdated',
+        'feedType' => 'getFeedType'
     ];
 
     /**
@@ -250,6 +256,7 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('md5', $data ?? [], null);
         $this->setIfExists('lastUpdated', $data ?? [], null);
+        $this->setIfExists('feedType', $data ?? [], null);
     }
 
     /**
@@ -410,6 +417,33 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable lastUpdated cannot be null');
         }
         $this->container['lastUpdated'] = $lastUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Gets feedType
+     *
+     * @return \Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType|null
+     */
+    public function getFeedType()
+    {
+        return $this->container['feedType'];
+    }
+
+    /**
+     * Sets feedType
+     *
+     * @param \Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType|null $feedType feedType
+     *
+     * @return self
+     */
+    public function setFeedType($feedType)
+    {
+        if (is_null($feedType)) {
+            throw new \InvalidArgumentException('non-nullable feedType cannot be null');
+        }
+        $this->container['feedType'] = $feedType;
 
         return $this;
     }

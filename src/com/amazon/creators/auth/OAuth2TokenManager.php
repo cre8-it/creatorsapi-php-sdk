@@ -102,17 +102,33 @@ class OAuth2TokenManager
     private function refreshToken()
     {
         try {
-            $response = $this->httpClient->post($this->config->getTokenEndpoint(), [
-                'form_params' => [
-                    'grant_type' => $this->config->getGrantType(),
-                    'client_id' => $this->config->getClientId(),
-                    'client_secret' => $this->config->getClientSecret(),
-                    'scope' => $this->config->getScope()
-                ],
-                'headers' => [
-                    'Content-Type' => 'application/x-www-form-urlencoded'
-                ]
-            ]);
+            if ($this->config->isLwa()) {
+                // LWA (v3.x) uses JSON body
+                $response = $this->httpClient->post($this->config->getTokenEndpoint(), [
+                    'json' => [
+                        'grant_type' => $this->config->getGrantType(),
+                        'client_id' => $this->config->getClientId(),
+                        'client_secret' => $this->config->getClientSecret(),
+                        'scope' => $this->config->getScope()
+                    ],
+                    'headers' => [
+                        'Content-Type' => 'application/json'
+                    ]
+                ]);
+            } else {
+                // Cognito (v2.x) uses form-encoded
+                $response = $this->httpClient->post($this->config->getTokenEndpoint(), [
+                    'form_params' => [
+                        'grant_type' => $this->config->getGrantType(),
+                        'client_id' => $this->config->getClientId(),
+                        'client_secret' => $this->config->getClientSecret(),
+                        'scope' => $this->config->getScope()
+                    ],
+                    'headers' => [
+                        'Content-Type' => 'application/x-www-form-urlencoded'
+                    ]
+                ]);
+            }
 
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);

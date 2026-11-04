@@ -41,7 +41,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filename' => 'string'
+        'filename' => 'string',
+        'reportType' => '\Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType'
     ];
 
     /**
@@ -52,7 +53,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'filename' => null
+        'filename' => null,
+        'reportType' => null
     ];
 
     /**
@@ -61,7 +63,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'filename' => false
+        'filename' => false,
+        'reportType' => false
     ];
 
     /**
@@ -150,7 +153,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'filename' => 'filename'
+        'filename' => 'filename',
+        'reportType' => 'reportType'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'filename' => 'setFilename'
+        'filename' => 'setFilename',
+        'reportType' => 'setReportType'
     ];
 
     /**
@@ -168,7 +173,8 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'filename' => 'getFilename'
+        'filename' => 'getFilename',
+        'reportType' => 'getReportType'
     ];
 
     /**
@@ -229,6 +235,7 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('reportType', $data ?? [], null);
     }
 
     /**
@@ -308,6 +315,33 @@ class GetReportRequestContent implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         $this->container['filename'] = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Gets reportType
+     *
+     * @return \Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType|null
+     */
+    public function getReportType()
+    {
+        return $this->container['reportType'];
+    }
+
+    /**
+     * Sets reportType
+     *
+     * @param \Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType|null $reportType reportType
+     *
+     * @return self
+     */
+    public function setReportType($reportType)
+    {
+        if (is_null($reportType)) {
+            throw new \InvalidArgumentException('non-nullable reportType cannot be null');
+        }
+        $this->container['reportType'] = $reportType;
 
         return $this;
     }

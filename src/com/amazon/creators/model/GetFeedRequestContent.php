@@ -41,7 +41,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'feedName' => 'string'
+        'feedName' => 'string',
+        'feedType' => '\Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType'
     ];
 
     /**
@@ -52,7 +53,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'feedName' => null
+        'feedName' => null,
+        'feedType' => null
     ];
 
     /**
@@ -61,7 +63,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'feedName' => false
+        'feedName' => false,
+        'feedType' => false
     ];
 
     /**
@@ -150,7 +153,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'feedName' => 'feedName'
+        'feedName' => 'feedName',
+        'feedType' => 'feedType'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'feedName' => 'setFeedName'
+        'feedName' => 'setFeedName',
+        'feedType' => 'setFeedType'
     ];
 
     /**
@@ -168,7 +173,8 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'feedName' => 'getFeedName'
+        'feedName' => 'getFeedName',
+        'feedType' => 'getFeedType'
     ];
 
     /**
@@ -229,6 +235,7 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('feedName', $data ?? [], null);
+        $this->setIfExists('feedType', $data ?? [], null);
     }
 
     /**
@@ -308,6 +315,33 @@ class GetFeedRequestContent implements ModelInterface, ArrayAccess, \JsonSeriali
         }
 
         $this->container['feedName'] = $feedName;
+
+        return $this;
+    }
+
+    /**
+     * Gets feedType
+     *
+     * @return \Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType|null
+     */
+    public function getFeedType()
+    {
+        return $this->container['feedType'];
+    }
+
+    /**
+     * Sets feedType
+     *
+     * @param \Amazon\CreatorsAPI\v1\com\amazon\creators\model\FeedType|null $feedType feedType
+     *
+     * @return self
+     */
+    public function setFeedType($feedType)
+    {
+        if (is_null($feedType)) {
+            throw new \InvalidArgumentException('non-nullable feedType cannot be null');
+        }
+        $this->container['feedType'] = $feedType;
 
         return $this;
     }
