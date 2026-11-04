@@ -518,11 +518,14 @@ class SearchItemsRequestContent implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'minSavingPercent', must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['partnerTag']) && (mb_strlen($this->container['partnerTag']) > 64)) {
+        if ($this->container['partnerTag'] === null) {
+            $invalidProperties[] = "'partnerTag' can't be null";
+        }
+        if ((mb_strlen($this->container['partnerTag']) > 64)) {
             $invalidProperties[] = "invalid value for 'partnerTag', the character length must be smaller than or equal to 64.";
         }
 
-        if (!is_null($this->container['partnerTag']) && !preg_match("/.*\\S.*/", $this->container['partnerTag'])) {
+        if (!preg_match("/.*\\S.*/", $this->container['partnerTag'])) {
             $invalidProperties[] = "invalid value for 'partnerTag', must be conform to the pattern /.*\\S.*/.";
         }
 
@@ -1126,7 +1129,7 @@ class SearchItemsRequestContent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets partnerTag
      *
-     * @return string|null
+     * @return string
      */
     public function getPartnerTag()
     {
@@ -1136,7 +1139,7 @@ class SearchItemsRequestContent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets partnerTag
      *
-     * @param string|null $partnerTag An alphanumeric token that uniquely identifies a partner. If the value of PartnerType is Associates, enter your Store Id or tracking ID.
+     * @param string $partnerTag Unique Id for a partner. This is used to identify the associate tag for tracking affiliate commissions. Example: 'xyz-20'
      *
      * @return self
      */

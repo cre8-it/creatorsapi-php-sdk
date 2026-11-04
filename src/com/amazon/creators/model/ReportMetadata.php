@@ -44,7 +44,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => 'string',
         'md5' => 'string',
         'size' => 'float',
-        'lastModified' => 'string'
+        'lastModified' => 'string',
+        'reportType' => '\Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType'
     ];
 
     /**
@@ -58,7 +59,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => null,
         'md5' => null,
         'size' => null,
-        'lastModified' => null
+        'lastModified' => null,
+        'reportType' => null
     ];
 
     /**
@@ -70,7 +72,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => false,
         'md5' => false,
         'size' => false,
-        'lastModified' => false
+        'lastModified' => false,
+        'reportType' => false
     ];
 
     /**
@@ -162,7 +165,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => 'filename',
         'md5' => 'md5',
         'size' => 'size',
-        'lastModified' => 'lastModified'
+        'lastModified' => 'lastModified',
+        'reportType' => 'reportType'
     ];
 
     /**
@@ -174,7 +178,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => 'setFilename',
         'md5' => 'setMd5',
         'size' => 'setSize',
-        'lastModified' => 'setLastModified'
+        'lastModified' => 'setLastModified',
+        'reportType' => 'setReportType'
     ];
 
     /**
@@ -186,7 +191,8 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => 'getFilename',
         'md5' => 'getMd5',
         'size' => 'getSize',
-        'lastModified' => 'getLastModified'
+        'lastModified' => 'getLastModified',
+        'reportType' => 'getReportType'
     ];
 
     /**
@@ -250,6 +256,7 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('md5', $data ?? [], null);
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('lastModified', $data ?? [], null);
+        $this->setIfExists('reportType', $data ?? [], null);
     }
 
     /**
@@ -410,6 +417,33 @@ class ReportMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable lastModified cannot be null');
         }
         $this->container['lastModified'] = $lastModified;
+
+        return $this;
+    }
+
+    /**
+     * Gets reportType
+     *
+     * @return \Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType|null
+     */
+    public function getReportType()
+    {
+        return $this->container['reportType'];
+    }
+
+    /**
+     * Sets reportType
+     *
+     * @param \Amazon\CreatorsAPI\v1\com\amazon\creators\model\ReportType|null $reportType reportType
+     *
+     * @return self
+     */
+    public function setReportType($reportType)
+    {
+        if (is_null($reportType)) {
+            throw new \InvalidArgumentException('non-nullable reportType cannot be null');
+        }
+        $this->container['reportType'] = $reportType;
 
         return $this;
     }
